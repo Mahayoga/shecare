@@ -58,11 +58,12 @@
         Swal.fire({
           title: data.title,
           text: data.message,
-          icon: data.status
+          icon: data.status,
+        }).then((result) => {
+          if(data.status == 'success') {
+            window.location.href = window.location.href.replace('hal=login', 'hal=dashboard');
+          }
         });
-        if(data.status == 'success') {
-          window.location.href = window.location.href.replace('hal=login', 'hal=dashboard');
-        }
       }
     };
 

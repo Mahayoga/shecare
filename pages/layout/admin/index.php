@@ -1,3 +1,24 @@
+<?php 
+  if(isset($_POST['btn-logout'])) {
+    session_destroy();
+    header('Location: ?hal=login');
+    exit;
+  }
+
+  $pageName = "Nah bro";
+  $hal = @$_GET['hal'];
+  $p = "pages/admin/$hal.php";
+  if(!empty($hal) && file_exists($p)){
+    if($hal == 'dashboard') {
+      $pageName = 'Dashboard';
+    } else if($hal == 'data_user') {
+      $pageName = 'Data User';
+    } else if($hal == 'data_artikel') {
+      $pageName = 'Data Artikel';
+    }
+  }
+?>
+
 <!--
 =========================================================
 * Soft UI Dashboard 3 - v1.1.0
@@ -21,7 +42,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets/admin/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/admin/img/favicon.png">
   <title>
-    Soft UI Dashboard 3 by Creative Tim
+    <?= @$pageName ?> | Admin SheCare
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -33,29 +54,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/admin/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+
+  <!-- Additional CSS File -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
+
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
-  <?php include "sidebar.php";?>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <!-- Navbar -->
-    <?php include "navbar.php"?>
-    <!-- End Navbar -->
-    <?php 
-      $hal = @$_GET['hal'];
-      $beranda = "pages/admin/dashboard.php";
-      $p = "pages/admin/$hal.php";
-      if(!empty($hal) && file_exists($p)){
-        include "$p";
-      }else{
-        include "$beranda";
-      }
-    ?>
-  </main>
   <!--   Core JS Files   -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="assets/admin/js/core/popper.min.js"></script>
   <script src="assets/admin/js/core/bootstrap.min.js"></script>
   <script src="assets/admin/js/plugins/perfect-scrollbar.min.js"></script>
@@ -244,6 +253,26 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/admin/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
-</body>
 
+  <!-- Additional JS File -->
+  <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
+
+<body class="g-sidenav-show  bg-gray-100">
+  <?php include "sidebar.php";?>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <?php include "navbar.php"?>
+    <!-- End Navbar -->
+    <?php 
+      $hal = @$_GET['hal'];
+      $beranda = "pages/admin/dashboard.php";
+      $p = "pages/admin/$hal.php";
+      if(!empty($hal) && file_exists($p)){
+        include "$p";
+      }else{
+        include "$beranda";
+      }
+    ?>
+  </main>
+</body>
 </html>
