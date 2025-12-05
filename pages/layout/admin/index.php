@@ -5,16 +5,29 @@
     exit;
   }
 
-  $pageName = "Nah bro";
+  $pageName = "Tidak ditemukan";
+  $breadcrumb = "Tidak ditemukan";
   $hal = @$_GET['hal'];
   $p = "pages/admin/$hal.php";
   if(!empty($hal) && file_exists($p)){
     if($hal == 'dashboard') {
       $pageName = 'Dashboard';
+      $breadcrumb = 'Dashboard';
     } else if($hal == 'data_user') {
       $pageName = 'Data User';
+      $breadcrumb = 'Data User';
     } else if($hal == 'data_artikel') {
       $pageName = 'Data Artikel';
+      $breadcrumb = 'Data Artikel';
+    } else if($hal == 'profil') {
+      $pageName = 'Profil Admin';
+      $breadcrumb = 'Profil Admin';
+    } else if($hal == 'data_penyakit') {
+      $pageName = 'Data Penyakit';
+      $breadcrumb = 'Data Penyakit';
+    } else if($hal == 'data_pertanyaan') {
+      $pageName = 'Data Pertanyaan';
+      $breadcrumb = 'Data Pertanyaan';
     }
   }
 ?>
@@ -70,6 +83,7 @@
   <script src="assets/admin/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/admin/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="assets/admin/js/plugins/chartjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

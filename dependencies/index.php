@@ -32,14 +32,14 @@
     // Create Table Users
     include "table_user.php";
 
-    // // Create Table Produk
-    // include "table_produk.php";
+    // // Create Table Artikel
+    include "table_artikel.php";
 
-    // // Create Table Jasa
-    // include "table_jasa.php";
+    // // Create Table Penyakit
+    include "table_penyakit.php";
 
-    // // Create Table Karyawan
-    // include "table_karyawan.php";
+    // // Create Table Pertanyaan
+    include "table_pertanyaan.php";
 
     // // Create Table Booking
     // include "table_booking.php";
@@ -56,3 +56,6 @@
 
     // // Create Foreign Key Table
     // include "table_foreign_key.php";
+
+    echo "<br> Reset dan setup database $database selesai.";
+    echo "Silahkan refresh halaman untuk melanjutkan.";
